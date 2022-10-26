@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\AppSection\Post\UI\API\Requests;
+namespace App\Containers\AppSection\Comment\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class CreatePostRequest extends ParentRequest
+class CreateCommentRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -26,7 +26,7 @@ class CreatePostRequest extends ParentRequest
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-        // 'id',
+        'post_id'
     ];
 
     /**
@@ -35,11 +35,9 @@ class CreatePostRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'slug' => 'required|string|min:3|max:25|unique:posts,slug',
-            'title' => 'required|string|min:3|max:150',
-            'description' => 'required|string|min:3|max:2500',
-            'date' => 'required|date',
-            'category_id' => 'integer|exists:categories,id',
+            'title' => 'required|string|min:3|max:50',
+            'comment' => 'required|string|min:3|max:2500',
+            'post_id' => 'required|exists:posts,id',
         ];
     }
 
