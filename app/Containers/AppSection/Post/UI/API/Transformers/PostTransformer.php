@@ -12,7 +12,9 @@ class PostTransformer extends ParentTransformer
     ];
 
     protected array $availableIncludes = [
-
+        'comments',
+        'user',
+        'category'
     ];
 
     public function transform(Post $post): array

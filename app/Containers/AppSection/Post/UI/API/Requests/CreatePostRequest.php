@@ -35,7 +35,7 @@ class CreatePostRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'slug' => 'required|string|min:3|max:25',
+            'slug' => 'required|string|min:3|max:25|unique:posts,slug',
             'title' => 'required|string|min:3|max:150',
             'description' => 'required|string|min:3|max:2500',
             'date' => 'required|date',
